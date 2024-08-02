@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.75, 9.25" name="QL_Bida">
+  <DataContextMoniker Name="/QL_BidaDataContext" />
+  <nestedChildShapes>
+    <classShape Id="3335ce38-d2d8-470a-8583-2f8f6d893cba" absoluteBounds="4, 7, 2, 1.9631982421874996">
+      <DataClassMoniker Name="/QL_BidaDataContext/BAN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9e586b89-29ac-414f-8134-fa62a38936a2" absoluteBounds="4.015, 7.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b4135b5f-282e-47bb-b44c-593d64eb8ce3" absoluteBounds="6.75, 1.25, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/QL_BidaDataContext/BIENLAI" />
+      <nestedChildShapes>
+        <elementListCompartment Id="581069f7-6656-430e-9257-96f6c51392bf" absoluteBounds="6.7650000000000006, 1.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5d9edeb4-b1ea-4250-a4ae-2f90206fcc01" absoluteBounds="9.5, 1.625, 2, 1.3862939453125003">
+      <DataClassMoniker Name="/QL_BidaDataContext/CHITIETDV" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7ab46494-2f74-44dc-9e4b-2609395f3605" absoluteBounds="9.515, 2.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5ff20d77-dea4-4e10-a23e-587ae27178eb" absoluteBounds="6.75, 5.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/QL_BidaDataContext/DICHVU" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2ec411ad-e342-4eb0-946e-da186b8abc82" absoluteBounds="6.7650000000000006, 6.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="86372252-909d-4853-9497-46bcf7a58040" absoluteBounds="4, 1.625, 2, 1.3862939453125003">
+      <DataClassMoniker Name="/QL_BidaDataContext/KHACHHANG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6e4dbb94-c517-4320-990f-13a82b970986" absoluteBounds="4.015, 2.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6 : 7); (6.375 : 6.625); (6.375 : 2.42390055338542); (6.75 : 2.42390055338542)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/QL_BidaDataContext/BAN/BAN_BIENLAI" />
+      <nodes>
+        <classShapeMoniker Id="3335ce38-d2d8-470a-8583-2f8f6d893cba" />
+        <classShapeMoniker Id="b4135b5f-282e-47bb-b44c-593d64eb8ce3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 2.31814697265625); (9.5 : 2.31814697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/QL_BidaDataContext/BIENLAI/BIENLAI_CHITIETDV" />
+      <nodes>
+        <classShapeMoniker Id="b4135b5f-282e-47bb-b44c-593d64eb8ce3" />
+        <classShapeMoniker Id="5d9edeb4-b1ea-4250-a4ae-2f90206fcc01" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 6.41429768880208); (10.5 : 6.41429768880208); (10.5 : 3.0112939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/QL_BidaDataContext/DICHVU/DICHVU_CHITIETDV" />
+      <nodes>
+        <classShapeMoniker Id="5ff20d77-dea4-4e10-a23e-587ae27178eb" />
+        <classShapeMoniker Id="5d9edeb4-b1ea-4250-a4ae-2f90206fcc01" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6 : 1.96195027669271); (6.75 : 1.96195027669271)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/QL_BidaDataContext/KHACHHANG/KHACHHANG_BIENLAI" />
+      <nodes>
+        <classShapeMoniker Id="86372252-909d-4853-9497-46bcf7a58040" />
+        <classShapeMoniker Id="b4135b5f-282e-47bb-b44c-593d64eb8ce3" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="f0ebea93-9bbc-4096-85be-1c23532f4833" absoluteBounds="3.5, 4.25, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/QL_BidaDataContext/NHANVIEN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a6ef7f02-3019-4253-ada8-a9f162d028f7" absoluteBounds="3.5149999999999997, 4.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.71875 : 4.25); (3.71875 : 3.33579702604167); (6.29166666666667 : 3.33579702604167 : JumpStart); (6.45833333333333 : 3.33579702604167 : JumpEnd); (6.75 : 3.33579702604167)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/QL_BidaDataContext/NHANVIEN/NHANVIEN_BIENLAI" />
+      <nodes>
+        <classShapeMoniker Id="f0ebea93-9bbc-4096-85be-1c23532f4833" />
+        <classShapeMoniker Id="b4135b5f-282e-47bb-b44c-593d64eb8ce3" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="42100b34-7a79-4175-ae76-3eba12cc6be4" absoluteBounds="0.5, 4.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/QL_BidaDataContext/DATBAN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3db7ff87-4074-4100-a2b0-f361a2683baf" absoluteBounds="0.51500000000000012, 5.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
