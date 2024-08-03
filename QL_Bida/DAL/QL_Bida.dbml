@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QL_Bida" Class="QL_BidaDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=QL_Bida;Integrated Security=True" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="QL_BidaConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-2ND8AB1B\SQLEXPRESS;Initial Catalog=QL_Bida;User ID=sa" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="QL_BidaConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="dbo.BAN" Member="BANs">
     <Type Name="BAN">
       <Column Name="MABAN" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -9,6 +9,16 @@
       <Column Name="TINHTRANG" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="GIATHUE" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Association Name="BAN_BIENLAI" Member="BIENLAIs" ThisKey="MABAN" OtherKey="MABAN" Type="BIENLAI" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NHANVIEN" Member="NHANVIENs">
+    <Type Name="NHANVIEN">
+      <Column Name="MANHANVIEN" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENNV" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CALAM" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PASSNV" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="QUYEN" Type="System.String" DbType="Char(5)" CanBeNull="true" />
+      <Association Name="NHANVIEN_BIENLAI" Member="BIENLAIs" ThisKey="MANHANVIEN" OtherKey="MANHANVIEN" Type="BIENLAI" />
     </Type>
   </Table>
   <Table Name="dbo.BIENLAI" Member="BIENLAIs">
@@ -23,8 +33,8 @@
       <Column Name="TONGTIEN" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Association Name="BIENLAI_CHITIETDV" Member="CHITIETDVs" ThisKey="MABIENLAI" OtherKey="MABIENLAI" Type="CHITIETDV" />
       <Association Name="BAN_BIENLAI" Member="BAN" ThisKey="MABAN" OtherKey="MABAN" Type="BAN" IsForeignKey="true" />
-      <Association Name="KHACHHANG_BIENLAI" Member="KHACHHANG" ThisKey="MAKH" OtherKey="MAKH" Type="KHACHHANG" IsForeignKey="true" />
       <Association Name="NHANVIEN_BIENLAI" Member="NHANVIEN" ThisKey="MANHANVIEN" OtherKey="MANHANVIEN" Type="NHANVIEN" IsForeignKey="true" />
+      <Association Name="KHACHHANG_BIENLAI" Member="KHACHHANG" ThisKey="MAKH" OtherKey="MAKH" Type="KHACHHANG" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CHITIETDV" Member="CHITIETDVs">
@@ -34,6 +44,17 @@
       <Column Name="SOLUONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="BIENLAI_CHITIETDV" Member="BIENLAI" ThisKey="MABIENLAI" OtherKey="MABIENLAI" Type="BIENLAI" IsForeignKey="true" />
       <Association Name="DICHVU_CHITIETDV" Member="DICHVU" ThisKey="MADV" OtherKey="MADV" Type="DICHVU" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DATBAN" Member="DATBANs">
+    <Type Name="DATBAN">
+      <Column Name="MADATBAN" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENKH" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SDT" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="LOAIBAN" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GHICHU" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="THOIGIANDEN" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.DICHVU" Member="DICHVUs">
@@ -51,27 +72,6 @@
       <Column Name="TENKH" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="SDT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="KHACHHANG_BIENLAI" Member="BIENLAIs" ThisKey="MAKH" OtherKey="MAKH" Type="BIENLAI" />
-    </Type>
-  </Table>
-  <Table Name="dbo.NHANVIEN" Member="NHANVIENs">
-    <Type Name="NHANVIEN">
-      <Column Name="MANHANVIEN" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TENNV" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="CALAM" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="PASSNV" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="QUYEN" Type="System.String" DbType="Char(5)" CanBeNull="true" />
-      <Association Name="NHANVIEN_BIENLAI" Member="BIENLAIs" ThisKey="MANHANVIEN" OtherKey="MANHANVIEN" Type="BIENLAI" />
-    </Type>
-  </Table>
-  <Table Name="dbo.DATBAN" Member="DATBANs">
-    <Type Name="DATBAN">
-      <Column Name="MADATBAN" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TENKH" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="SDT" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
-      <Column Name="LOAIBAN" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="GHICHU" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-      <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="THOIGIANDEN" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

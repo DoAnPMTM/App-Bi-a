@@ -51,24 +51,25 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.White;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(32, 32);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(32);
+            this.labelControl1.Location = new System.Drawing.Point(28, 26);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(28, 26, 28, 26);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(357, 37);
+            this.labelControl1.Size = new System.Drawing.Size(303, 31);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "DANH SÁCH ĐẶT BÀN";
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(62, 158);
+            this.panel1.Location = new System.Drawing.Point(55, 126);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(666, 417);
+            this.panel1.Size = new System.Drawing.Size(592, 334);
             this.panel1.TabIndex = 2;
             // 
             // dataGridView1
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -77,10 +78,11 @@
             this.Column4});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(666, 417);
+            this.dataGridView1.Size = new System.Drawing.Size(592, 334);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
@@ -118,8 +120,9 @@
             this.panel2.Controls.Add(this.labelControl1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(794, 90);
+            this.panel2.Size = new System.Drawing.Size(706, 72);
             this.panel2.TabIndex = 3;
             // 
             // panel4
@@ -128,9 +131,10 @@
             this.panel4.Controls.Add(this.close_btn);
             this.panel4.Controls.Add(this.minimize_btn);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(606, 0);
+            this.panel4.Location = new System.Drawing.Point(539, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(188, 90);
+            this.panel4.Size = new System.Drawing.Size(167, 72);
             this.panel4.TabIndex = 4;
             // 
             // close_btn
@@ -138,9 +142,10 @@
             this.close_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
             this.close_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.close_btn.Image = global::GUI.Properties.Resources.close;
-            this.close_btn.Location = new System.Drawing.Point(127, 12);
+            this.close_btn.Location = new System.Drawing.Point(113, 10);
+            this.close_btn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.close_btn.Name = "close_btn";
-            this.close_btn.Size = new System.Drawing.Size(36, 39);
+            this.close_btn.Size = new System.Drawing.Size(32, 31);
             this.close_btn.TabIndex = 1;
             this.close_btn.UseVisualStyleBackColor = false;
             this.close_btn.Click += new System.EventHandler(this.close_btn_Click);
@@ -150,22 +155,24 @@
             this.minimize_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
             this.minimize_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minimize_btn.Image = global::GUI.Properties.Resources.minimize;
-            this.minimize_btn.Location = new System.Drawing.Point(62, 12);
+            this.minimize_btn.Location = new System.Drawing.Point(55, 10);
+            this.minimize_btn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.minimize_btn.Name = "minimize_btn";
-            this.minimize_btn.Size = new System.Drawing.Size(36, 39);
+            this.minimize_btn.Size = new System.Drawing.Size(32, 31);
             this.minimize_btn.TabIndex = 0;
             this.minimize_btn.UseVisualStyleBackColor = false;
             this.minimize_btn.Click += new System.EventHandler(this.minimize_btn_Click);
             // 
             // frmDatBan
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(794, 695);
+            this.BackColor = System.Drawing.Color.Teal;
+            this.ClientSize = new System.Drawing.Size(706, 556);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmDatBan";
             this.Text = "frmDatBan";
             this.panel1.ResumeLayout(false);

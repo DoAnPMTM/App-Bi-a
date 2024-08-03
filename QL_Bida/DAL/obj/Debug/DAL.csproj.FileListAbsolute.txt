@@ -5,3 +5,10 @@ C:\Users\t480s\source\repos\TieuLuan_PTPM\QL_Bida\DAL\obj\Debug\DAL.csproj.CoreC
 C:\Users\t480s\source\repos\TieuLuan_PTPM\QL_Bida\DAL\obj\Debug\DAL.dll
 C:\Users\t480s\source\repos\TieuLuan_PTPM\QL_Bida\DAL\obj\Debug\DAL.pdb
 C:\Users\t480s\source\repos\TieuLuan_PTPM\QL_Bida\DAL\bin\Debug\DAL.dll.config
+D:\App-Bi-a\QL_Bida\DAL\bin\Debug\DAL.dll.config
+D:\App-Bi-a\QL_Bida\DAL\bin\Debug\DAL.dll
+D:\App-Bi-a\QL_Bida\DAL\bin\Debug\DAL.pdb
+D:\App-Bi-a\QL_Bida\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\App-Bi-a\QL_Bida\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\App-Bi-a\QL_Bida\DAL\obj\Debug\DAL.dll
+D:\App-Bi-a\QL_Bida\DAL\obj\Debug\DAL.pdb

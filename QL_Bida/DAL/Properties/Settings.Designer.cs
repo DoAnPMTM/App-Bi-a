@@ -44,5 +44,16 @@ namespace DAL.Properties {
                 return ((string)(this["QL_BidaConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-2ND8AB1B\\SQLEXPRESS;Initial Catalog=QL_Bida;User ID=sa;Passwor" +
+            "d=123")]
+        public string QL_BidaConnectionString2 {
+            get {
+                return ((string)(this["QL_BidaConnectionString2"]));
+            }
+        }
     }
 }
