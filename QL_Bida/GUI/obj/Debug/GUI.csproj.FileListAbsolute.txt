@@ -142,3 +142,6 @@ D:\App-Bi-a\QL_Bida\GUI\bin\Debug\DevExpress.Xpo.v24.1.xml
 D:\App-Bi-a\QL_Bida\GUI\bin\Debug\DevExpress.Charts.v24.1.Core.xml
 D:\App-Bi-a\QL_Bida\GUI\bin\Debug\DevExpress.TreeMap.v24.1.Core.xml
 D:\App-Bi-a\QL_Bida\GUI\obj\Debug\GUI.frmQL_Ban.resources
+D:\App-Bi-a\QL_Bida\GUI\obj\Debug\GUI.frmQL_DichVu.resources
+D:\App-Bi-a\QL_Bida\GUI\obj\Debug\GUI.frmQL_KhachHang.resources
+D:\App-Bi-a\QL_Bida\GUI\obj\Debug\GUI.frmQL_NhanVien.resources

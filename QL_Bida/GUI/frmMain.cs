@@ -27,6 +27,7 @@ namespace GUI
             loadHienThi();
             label1.Text = nv.TENNV;
             getTable1();
+            
         }
         public frmMain()
         {
