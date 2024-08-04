@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using DevExpress.XtraWaitForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,11 +28,21 @@ namespace GUI
             xoaToolStripMenuItem.Click += XoaToolStripMenuItem_Click;
             suaToolStripMenuItem.Click += SuaToolStripMenuItem_Click;
             searchToolStripMenuItem.Click += SearchToolStripMenuItem_Click;
+            closeToolStripMenuItem.Click += CloseToolStripMenuItem_Click;
 
             //
             cboLoaiBan.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTinhTrang.DropDownStyle = ComboBoxStyle.DropDownList;
             cboKhuVuc.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void SearchToolStripMenuItem_Click(object sender, EventArgs e)
@@ -43,7 +54,7 @@ namespace GUI
             string tinhTrang = cboTinhTrang.SelectedItem?.ToString();
 
             // Chuỗi truy vấn SQL để tìm kiếm theo các tiêu chí đã nhập
-            string searchQuery = "SELECT MaBan, TenBan, CASE WHEN LoaiBan = 0 THEN N'Lỗ' ELSE N'France' END AS LoaiBan, KhuVuc, CASE WHEN TinhTrang = 1 THEN N'Còn' ELSE N'Hỏng' END AS TinhTrang, GiaThue FROM Ban WHERE 1 = 1";
+            string searchQuery = "SELECT MaBan, TenBan, CASE WHEN LoaiBan = 0 THEN N'Lỗ' ELSE N'France' END AS LoaiBan, KhuVuc, CASE WHEN TinhTrang = 1 THEN N'Đã đặt' ELSE N'Trống' END AS TinhTrang, GiaThue FROM Ban WHERE 1 = 1";
 
             if (!string.IsNullOrEmpty(maBan))
             {
@@ -87,7 +98,7 @@ namespace GUI
                 }
                 if (!string.IsNullOrEmpty(tinhTrang))
                 {
-                    adapter.SelectCommand.Parameters.AddWithValue("@TinhTrang", tinhTrang == "Hỏng" ? 0 : 1);
+                    adapter.SelectCommand.Parameters.AddWithValue("@TinhTrang", tinhTrang == "Trống" ? 0 : 1);
                 }
 
                 // Tạo DataTable để lưu dữ liệu từ cơ sở dữ liệu
@@ -134,90 +145,23 @@ namespace GUI
                 return;
             }
 
-            //// Check if MaBan is a valid integer
-            //if (!int.TryParse(txtMaBan.Text, out int maBan))
-            //{
-            //    MessageBox.Show("Mã bàn không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-
-            // Validate TenBan
-            string tenBan = txtTenBan.Text;
+            string tenBan = txtTenBan.Text.Trim();
             if (string.IsNullOrEmpty(tenBan))
             {
                 MessageBox.Show("Tên bàn không được để trống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            //// Validate LoaiBan
-            //string loaiBanStr = cboLoaiBan.SelectedItem?.ToString();
-            //bool loaiBan;
-            //if (loaiBanStr == "Lỗ")
-            //{
-            //    loaiBan = true;
-            //}
-            //else if (loaiBanStr == "France")
-            //{
-            //    loaiBan = false;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Loại bàn không hợp lệ! Chỉ được chọn 'Lỗ' hoặc 'France'", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-
-            //// Validate KhuVuc
-            //string khuVucStr = cboKhuVuc.SelectedItem?.ToString();
-            //if (string.IsNullOrEmpty(khuVucStr) && !cboKhuVuc.Items.Contains(khuVucStr))
-            //{
-            //    MessageBox.Show("Khu vực không hợp lệ! Chọn một giá trị hợp lệ từ danh sách.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-
-            //int khuVuc;
-            //if (!int.TryParse(khuVucStr, out khuVuc)&& !cboKhuVuc.Items.Contains(khuVucStr))
-            //{
-            //    MessageBox.Show("Khu vực không hợp lệ !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-
-            //// Validate TinhTrang
-            //string tinhTrangStr = cboTinhTrang.SelectedItem?.ToString();
-            //bool tinhTrang;
-            //if (tinhTrangStr == "Hỏng")
-            //{
-            //    tinhTrang = false;
-            //}
-            //else if (tinhTrangStr == "Còn")
-            //{
-            //    tinhTrang = true;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Tình trạng không hợp lệ! Chỉ được chọn 'Còn' hoặc 'Hỏng'", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
-
-            // Validate GiaThue
             if (!float.TryParse(txtGiaThue.Text, out float giaThue))
             {
-                MessageBox.Show("Giá thuê không hợp lệ !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Giá thuê không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Get selected values from ComboBox controls
-            string loaiBan = cboLoaiBan.SelectedItem?.ToString();
-            string khuVuc = cboKhuVuc.SelectedItem?.ToString();
-            string tinhTrang = cboTinhTrang.SelectedItem?.ToString();
+            int loaiBan = cboLoaiBan.Text.Trim() == "Lỗ" ? 0 : 1;
+            string khuVuc = cboKhuVuc.Text.Trim();
+            int tinhTrang = cboTinhTrang.Text.Trim() == "Đã đặt" ? 1 : 0;
 
-            // Ensure that ComboBox values are not null or empty
-            if (string.IsNullOrEmpty(loaiBan) || string.IsNullOrEmpty(khuVuc) || string.IsNullOrEmpty(tinhTrang))
-            {
-                MessageBox.Show("Vui lòng chọn giá trị cho tất cả các trường!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // SQL Update command
             string query = "UPDATE Ban SET TenBan = @TenBan, LoaiBan = @LoaiBan, KhuVuc = @KhuVuc, TinhTrang = @TinhTrang, GiaThue = @GiaThue WHERE MaBan = @MaBan";
 
             try
@@ -234,23 +178,18 @@ namespace GUI
                     conn.Open();
                     int result = command.ExecuteNonQuery();
 
-                    // Check if the update was successful
                     if (result > 0)
                     {
                         MessageBox.Show("Cập nhật bàn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadgvBan(); // Method to refresh the DataGridView with updated data
-                        LoadCboLoaiBan();
+                        LoadgvBan();
                         LoadCboKhuVuc();
+                        LoadCboLoaiBan();
                         LoadCboTinhTrang();
                         ClearFields();
                     }
                     else
                     {
                         MessageBox.Show("Cập nhật bàn thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        LoadgvBan(); // Method to refresh the DataGridView with updated data
-                        LoadCboLoaiBan();
-                        LoadCboKhuVuc();
-                        LoadCboTinhTrang();
                     }
                 }
             }
@@ -321,63 +260,26 @@ namespace GUI
                 MessageBox.Show("Giá thuê không hợp lệ!");
                 return;
             }
-            string loaiBanText = cboLoaiBan.Text.Trim();
-            int loaiBan;
-            if (loaiBanText == "Lỗ")
-            {
-                loaiBan = 0;
-            }
-            else if (loaiBanText == "France")
-            {
-                loaiBan = 1;
-            }
-            else
-            {
-                MessageBox.Show("Loại bàn không hợp lệ!");
-                return;
-            }
 
-            int khuVuc;
-            if (!int.TryParse(cboKhuVuc.Text.Trim(), out khuVuc))
-            {
-                MessageBox.Show("Khu vực không hợp lệ!");
-                return;
-            }
-
-            string tinhTrangText = cboTinhTrang.Text.Trim();
-            int tinhTrang;
-            if (tinhTrangText == "Hỏng")
-            {
-                tinhTrang = 0;
-            }
-            else if (tinhTrangText == "Còn")
-            {
-                tinhTrang = 1;
-            }
-            else
-            {
-                MessageBox.Show("Tình trạng không hợp lệ!");
-                return;
-            }
+            int loaiBan = cboLoaiBan.Text.Trim() == "Lỗ" ? 0 : 1;
+            string khuVuc = cboKhuVuc.Text.Trim();
+            int tinhTrang = cboTinhTrang.Text.Trim() == "Đã đặt" ? 1 : 0;
 
             string insertQuery = "INSERT INTO Ban (TenBan, GiaThue, LoaiBan, KhuVuc, TinhTrang) VALUES (@TenBan, @GiaThue, @LoaiBan, @KhuVuc, @TinhTrang)";
             using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
             {
                 cmd.Parameters.AddWithValue("@TenBan", tenBan);
                 cmd.Parameters.AddWithValue("@GiaThue", giaThue);
-                cmd.Parameters.AddWithValue("@LoaiBan", loaiBan); // Chuyển loaiBan thành bit
+                cmd.Parameters.AddWithValue("@LoaiBan", loaiBan);
                 cmd.Parameters.AddWithValue("@KhuVuc", khuVuc);
-                cmd.Parameters.AddWithValue("@TinhTrang", tinhTrang); // Chuyển tinhTrang thành bit
+                cmd.Parameters.AddWithValue("@TinhTrang", tinhTrang);
 
                 try
                 {
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Thêm bàn thành công!");
-                    LoadgvBan(); // Hàm để load lại dữ liệu DataGridView
-                    LoadCboLoaiBan();
-                    LoadCboKhuVuc();
-                    LoadCboTinhTrang();
+                    LoadgvBan();
                     ClearFields();
                 }
                 catch (Exception ex)
@@ -465,14 +367,7 @@ namespace GUI
                 var cellValueLoaiBan = row.Cells["LoaiBan"].Value?.ToString();
                 if (!string.IsNullOrEmpty(cellValueLoaiBan))
                 {
-                    if (cellValueLoaiBan == "Lỗ")
-                    {
-                        cboLoaiBan.SelectedItem = "Lỗ";
-                    }
-                    else if (cellValueLoaiBan == "France")
-                    {
-                        cboLoaiBan.SelectedItem = "France";
-                    }
+                    cboLoaiBan.SelectedItem = cellValueLoaiBan;
                 }
                 else
                 {
@@ -494,14 +389,7 @@ namespace GUI
                 var cellValueTinhTrang = row.Cells["TinhTrang"].Value?.ToString();
                 if (!string.IsNullOrEmpty(cellValueTinhTrang))
                 {
-                    if (cellValueTinhTrang == "Còn")
-                    {
-                        cboTinhTrang.SelectedItem = "Còn";
-                    }
-                    else if (cellValueTinhTrang == "Hỏng")
-                    {
-                        cboTinhTrang.SelectedItem = "Hỏng";
-                    }
+                    cboTinhTrang.SelectedItem = cellValueTinhTrang;
                 }
                 else
                 {
@@ -574,7 +462,7 @@ namespace GUI
                         while (reader.Read())
                         {
                             bool tinhTrang = (bool)reader["TinhTrang"];
-                            cboTinhTrang.Items.Add(tinhTrang ? "Hỏng" : "Còn");
+                            cboTinhTrang.Items.Add(tinhTrang ? "Đã đặt" : "Trống");
                         }
                     }
                 }
@@ -626,20 +514,20 @@ namespace GUI
         public void LoadgvBan()
         {
             string select_ban = @"
-        SELECT 
-            MaBan, 
-            TenBan, 
-            CASE 
-                WHEN LoaiBan = 1 THEN N'Lỗ' 
-                ELSE 'France' 
-            END AS LoaiBan, 
-            KhuVuc, 
-            CASE 
-                WHEN TinhTrang = 1 THEN N'Còn' 
-                ELSE N'Hỏng' 
-            END AS TinhTrang, 
-            GiaThue 
-        FROM Ban";
+            SELECT 
+                MaBan, 
+                TenBan, 
+                CASE 
+                    WHEN LoaiBan = 0 THEN N'Lỗ' 
+                    ELSE N'France' 
+                END AS LoaiBan, 
+                KhuVuc, 
+                CASE 
+                    WHEN TinhTrang = 1 THEN N'Đã đặt' 
+                    ELSE N'Trống' 
+                END AS TinhTrang, 
+                GiaThue 
+            FROM Ban";
 
             SqlDataAdapter da_ban = new SqlDataAdapter(select_ban, conn);
             DataTable dt_ban = new DataTable();

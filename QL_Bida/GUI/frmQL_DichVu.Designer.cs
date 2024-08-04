@@ -31,6 +31,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.themToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xoaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.suaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvDV = new System.Windows.Forms.DataGridView();
             this.MaDichVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenDichVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,11 +49,6 @@
             this.txtTenDV = new System.Windows.Forms.TextBox();
             this.txtMaDV = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.themToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.xoaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.suaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDV)).BeginInit();
@@ -86,9 +86,47 @@
             this.closeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 65);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(481, 36);
+            this.menuStrip1.Size = new System.Drawing.Size(631, 36);
             this.menuStrip1.TabIndex = 85;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // themToolStripMenuItem
+            // 
+            this.themToolStripMenuItem.Image = global::GUI.Properties.Resources.add;
+            this.themToolStripMenuItem.Name = "themToolStripMenuItem";
+            this.themToolStripMenuItem.Size = new System.Drawing.Size(94, 32);
+            this.themToolStripMenuItem.Text = "Thêm";
+            // 
+            // xoaToolStripMenuItem
+            // 
+            this.xoaToolStripMenuItem.Image = global::GUI.Properties.Resources.delete;
+            this.xoaToolStripMenuItem.Name = "xoaToolStripMenuItem";
+            this.xoaToolStripMenuItem.Size = new System.Drawing.Size(80, 32);
+            this.xoaToolStripMenuItem.Text = "Xóa";
+            // 
+            // suaToolStripMenuItem
+            // 
+            this.suaToolStripMenuItem.Image = global::GUI.Properties.Resources.edit;
+            this.suaToolStripMenuItem.Name = "suaToolStripMenuItem";
+            this.suaToolStripMenuItem.Size = new System.Drawing.Size(79, 32);
+            this.suaToolStripMenuItem.Text = "Sửa";
+            // 
+            // searchToolStripMenuItem
+            // 
+            this.searchToolStripMenuItem.Image = global::GUI.Properties.Resources.search;
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(125, 32);
+            this.searchToolStripMenuItem.Text = "Tìm kiếm";
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.BackColor = System.Drawing.Color.Red;
+            this.closeToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.closeToolStripMenuItem.Image = global::GUI.Properties.Resources.close;
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(95, 32);
+            this.closeToolStripMenuItem.Text = "Đóng";
+            
             // 
             // dgvDV
             // 
@@ -212,43 +250,6 @@
             this.label5.Size = new System.Drawing.Size(64, 17);
             this.label5.TabIndex = 92;
             this.label5.Text = "Đơn giá";
-            // 
-            // themToolStripMenuItem
-            // 
-            this.themToolStripMenuItem.Image = global::GUI.Properties.Resources.add;
-            this.themToolStripMenuItem.Name = "themToolStripMenuItem";
-            this.themToolStripMenuItem.Size = new System.Drawing.Size(94, 32);
-            this.themToolStripMenuItem.Text = "Thêm";
-            // 
-            // xoaToolStripMenuItem
-            // 
-            this.xoaToolStripMenuItem.Image = global::GUI.Properties.Resources.delete;
-            this.xoaToolStripMenuItem.Name = "xoaToolStripMenuItem";
-            this.xoaToolStripMenuItem.Size = new System.Drawing.Size(80, 32);
-            this.xoaToolStripMenuItem.Text = "Xóa";
-            // 
-            // suaToolStripMenuItem
-            // 
-            this.suaToolStripMenuItem.Image = global::GUI.Properties.Resources.edit;
-            this.suaToolStripMenuItem.Name = "suaToolStripMenuItem";
-            this.suaToolStripMenuItem.Size = new System.Drawing.Size(79, 32);
-            this.suaToolStripMenuItem.Text = "Sửa";
-            // 
-            // searchToolStripMenuItem
-            // 
-            this.searchToolStripMenuItem.Image = global::GUI.Properties.Resources.search;
-            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(125, 32);
-            this.searchToolStripMenuItem.Text = "Tìm kiếm";
-            // 
-            // closeToolStripMenuItem
-            // 
-            this.closeToolStripMenuItem.BackColor = System.Drawing.Color.Red;
-            this.closeToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.closeToolStripMenuItem.Image = global::GUI.Properties.Resources.close;
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(95, 32);
-            this.closeToolStripMenuItem.Text = "Đóng";
             // 
             // frmQL_DichVu
             // 

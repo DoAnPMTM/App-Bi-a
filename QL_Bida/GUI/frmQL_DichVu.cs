@@ -32,13 +32,15 @@ namespace GUI
             suaToolStripMenuItem.Click += SuaToolStripMenuItem_Click;
             searchToolStripMenuItem.Click += SearchToolStripMenuItem_Click;
             closeToolStripMenuItem.Click += CloseToolStripMenuItem_Click;
+            
         }
 
         private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            if (MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                Application.Exit();
+                this.Close();
             }
         }
 
@@ -415,5 +417,6 @@ namespace GUI
             da_dv.Fill(dt_dv);
             dgvDV.DataSource = dt_dv;
         }
+
     }
 }

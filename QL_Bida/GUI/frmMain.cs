@@ -27,8 +27,95 @@ namespace GUI
             loadHienThi();
             label1.Text = nv.TENNV;
             getTable1();
-            
+            dịchVụToolStripMenuItem.Click += DịchVụToolStripMenuItem_Click;
+            kháchHàngToolStripMenuItem.Click += KháchHàngToolStripMenuItem_Click;
+            nhânViênToolStripMenuItem.Click += NhânViênToolStripMenuItem_Click;
         }
+
+        private void NhânViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Hide the panels
+            this.bida_panel1.Visible = false;
+            this.flowLayoutPanel1.Visible = false;
+            this.panel1.Visible = false;
+
+            // Create and display the frmQL_Ban form
+            frmQL_NhanVien nv = new frmQL_NhanVien();
+            nv.TopLevel = false; // Set to false to add to a panel
+            nv.FormBorderStyle = FormBorderStyle.None; // Optional: remove form borders
+            nv.Dock = DockStyle.Fill; // Make it fill the panel
+
+            // Attach the FormClosed event handler
+            nv.FormClosed += Nv_FormClosed;
+
+            this.bida_panel.Controls.Clear(); // Clear previous controls if needed
+            this.bida_panel.Controls.Add(nv); // Add to the panel
+            nv.Show();
+        }
+
+        private void Nv_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmMain frm = new frmMain(nv);
+            frm.Show();
+            this.Close();
+        }
+
+        private void KháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Hide the panels
+            this.bida_panel1.Visible = false;
+            this.flowLayoutPanel1.Visible = false;
+            this.panel1.Visible = false;
+
+            // Create and display the frmQL_Ban form
+            frmQL_KhachHang kh = new frmQL_KhachHang();
+            kh.TopLevel = false; // Set to false to add to a panel
+            kh.FormBorderStyle = FormBorderStyle.None; // Optional: remove form borders
+            kh.Dock = DockStyle.Fill; // Make it fill the panel
+
+            // Attach the FormClosed event handler
+            kh.FormClosed += Kh_FormClosed;
+
+            this.bida_panel.Controls.Clear(); // Clear previous controls if needed
+            this.bida_panel.Controls.Add(kh); // Add to the panel
+            kh.Show(); // Show the form
+        }
+
+        private void Kh_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmMain frm = new frmMain(nv);
+            frm.Show();
+            this.Close();
+        }
+
+        private void DịchVụToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Hide the panels
+            this.bida_panel1.Visible = false;
+            this.flowLayoutPanel1.Visible = false;
+            this.panel1.Visible = false;
+
+            // Create and display the frmQL_Ban form
+            frmQL_DichVu dv = new frmQL_DichVu();
+            dv.TopLevel = false; // Set to false to add to a panel
+            dv.FormBorderStyle = FormBorderStyle.None; // Optional: remove form borders
+            dv.Dock = DockStyle.Fill; // Make it fill the panel
+
+            // Attach the FormClosed event handler
+            dv.FormClosed += Dv_FormClosed;
+
+            this.bida_panel.Controls.Clear(); // Clear previous controls if needed
+            this.bida_panel.Controls.Add(dv); // Add to the panel
+            dv.Show(); // Show the form
+        }
+
+        private void Dv_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmMain frm = new frmMain(nv);
+            frm.Show();
+            this.Close();
+        }
+
         public frmMain()
         {
             
@@ -261,6 +348,38 @@ namespace GUI
             frmTaiKhoan frmTaiKhoan = new frmTaiKhoan();
             frmTaiKhoan.ShowDialog();
             this.Show();
+        }
+
+        private void bànToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Hide the panels
+            this.bida_panel1.Visible = false;
+            this.flowLayoutPanel1.Visible = false;
+            this.panel1.Visible = false;
+
+            // Create and display the frmQL_Ban form
+            frmQL_Ban ban = new frmQL_Ban();
+            ban.TopLevel = false; // Set to false to add to a panel
+            ban.FormBorderStyle = FormBorderStyle.None; // Optional: remove form borders
+            ban.Dock = DockStyle.Fill; // Make it fill the panel
+
+            // Attach the FormClosed event handler
+            ban.FormClosed += Ban_FormClosed;
+
+            this.bida_panel.Controls.Clear(); // Clear previous controls if needed
+            this.bida_panel.Controls.Add(ban); // Add to the panel
+            ban.Show(); // Show the form
+        }
+
+        private void Ban_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //// Show the panels again
+            //this.bida_panel1.Visible = true;
+            //this.flowLayoutPanel1.Visible = true;
+            //this.panel1.Visible = true;
+            frmMain frm = new frmMain(nv);
+            frm.Show();
+            this.Close();
         }
     }
 }

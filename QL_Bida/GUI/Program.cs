@@ -8,6 +8,7 @@ namespace GUI
 {
     internal static class Program
     {
+        public static frmMain mainForm = null;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

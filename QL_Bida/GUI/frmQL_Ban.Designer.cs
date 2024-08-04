@@ -31,6 +31,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.themToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xoaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.suaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvBan = new System.Windows.Forms.DataGridView();
             this.maban = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenban = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,11 +55,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtTenBan = new System.Windows.Forms.TextBox();
             this.txtMaBan = new System.Windows.Forms.TextBox();
-            this.themToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.xoaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.suaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBan)).BeginInit();
@@ -92,9 +92,46 @@
             this.closeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 67);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(483, 36);
+            this.menuStrip1.Size = new System.Drawing.Size(481, 36);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // themToolStripMenuItem
+            // 
+            this.themToolStripMenuItem.Image = global::GUI.Properties.Resources.add;
+            this.themToolStripMenuItem.Name = "themToolStripMenuItem";
+            this.themToolStripMenuItem.Size = new System.Drawing.Size(94, 32);
+            this.themToolStripMenuItem.Text = "Thêm";
+            // 
+            // xoaToolStripMenuItem
+            // 
+            this.xoaToolStripMenuItem.Image = global::GUI.Properties.Resources.delete;
+            this.xoaToolStripMenuItem.Name = "xoaToolStripMenuItem";
+            this.xoaToolStripMenuItem.Size = new System.Drawing.Size(80, 32);
+            this.xoaToolStripMenuItem.Text = "Xóa";
+            // 
+            // suaToolStripMenuItem
+            // 
+            this.suaToolStripMenuItem.Image = global::GUI.Properties.Resources.edit;
+            this.suaToolStripMenuItem.Name = "suaToolStripMenuItem";
+            this.suaToolStripMenuItem.Size = new System.Drawing.Size(79, 32);
+            this.suaToolStripMenuItem.Text = "Sửa";
+            // 
+            // searchToolStripMenuItem
+            // 
+            this.searchToolStripMenuItem.Image = global::GUI.Properties.Resources.search;
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(125, 32);
+            this.searchToolStripMenuItem.Text = "Tìm kiếm";
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.BackColor = System.Drawing.Color.Red;
+            this.closeToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.closeToolStripMenuItem.Image = global::GUI.Properties.Resources.close;
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(95, 32);
+            this.closeToolStripMenuItem.Text = "Đóng";
             // 
             // dgvBan
             // 
@@ -106,12 +143,12 @@
             this.khuvuc,
             this.tinhtrang,
             this.giathue});
-            this.dgvBan.Location = new System.Drawing.Point(443, 154);
+            this.dgvBan.Location = new System.Drawing.Point(479, 151);
             this.dgvBan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvBan.Name = "dgvBan";
             this.dgvBan.RowHeadersWidth = 51;
             this.dgvBan.RowTemplate.Height = 24;
-            this.dgvBan.Size = new System.Drawing.Size(794, 291);
+            this.dgvBan.Size = new System.Drawing.Size(602, 291);
             this.dgvBan.TabIndex = 55;
             // 
             // maban
@@ -168,7 +205,7 @@
             this.cboLoaiBan.Location = new System.Drawing.Point(110, 254);
             this.cboLoaiBan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboLoaiBan.Name = "cboLoaiBan";
-            this.cboLoaiBan.Size = new System.Drawing.Size(294, 24);
+            this.cboLoaiBan.Size = new System.Drawing.Size(286, 24);
             this.cboLoaiBan.TabIndex = 82;
             // 
             // cboKhuVuc
@@ -177,7 +214,7 @@
             this.cboKhuVuc.Location = new System.Drawing.Point(110, 308);
             this.cboKhuVuc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboKhuVuc.Name = "cboKhuVuc";
-            this.cboKhuVuc.Size = new System.Drawing.Size(294, 24);
+            this.cboKhuVuc.Size = new System.Drawing.Size(286, 24);
             this.cboKhuVuc.TabIndex = 81;
             // 
             // label6
@@ -196,7 +233,7 @@
             this.txtGiaThue.Location = new System.Drawing.Point(110, 422);
             this.txtGiaThue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtGiaThue.Name = "txtGiaThue";
-            this.txtGiaThue.Size = new System.Drawing.Size(294, 23);
+            this.txtGiaThue.Size = new System.Drawing.Size(286, 23);
             this.txtGiaThue.TabIndex = 83;
             // 
             // cboTinhTrang
@@ -205,7 +242,7 @@
             this.cboTinhTrang.Location = new System.Drawing.Point(110, 366);
             this.cboTinhTrang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboTinhTrang.Name = "cboTinhTrang";
-            this.cboTinhTrang.Size = new System.Drawing.Size(294, 24);
+            this.cboTinhTrang.Size = new System.Drawing.Size(286, 24);
             this.cboTinhTrang.TabIndex = 79;
             // 
             // label5
@@ -268,7 +305,7 @@
             this.txtTenBan.Location = new System.Drawing.Point(110, 201);
             this.txtTenBan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTenBan.Name = "txtTenBan";
-            this.txtTenBan.Size = new System.Drawing.Size(294, 23);
+            this.txtTenBan.Size = new System.Drawing.Size(286, 23);
             this.txtTenBan.TabIndex = 73;
             // 
             // txtMaBan
@@ -278,45 +315,8 @@
             this.txtMaBan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMaBan.Name = "txtMaBan";
             this.txtMaBan.ReadOnly = true;
-            this.txtMaBan.Size = new System.Drawing.Size(294, 23);
+            this.txtMaBan.Size = new System.Drawing.Size(286, 23);
             this.txtMaBan.TabIndex = 72;
-            // 
-            // themToolStripMenuItem
-            // 
-            this.themToolStripMenuItem.Image = global::GUI.Properties.Resources.add;
-            this.themToolStripMenuItem.Name = "themToolStripMenuItem";
-            this.themToolStripMenuItem.Size = new System.Drawing.Size(94, 32);
-            this.themToolStripMenuItem.Text = "Thêm";
-            // 
-            // xoaToolStripMenuItem
-            // 
-            this.xoaToolStripMenuItem.Image = global::GUI.Properties.Resources.delete;
-            this.xoaToolStripMenuItem.Name = "xoaToolStripMenuItem";
-            this.xoaToolStripMenuItem.Size = new System.Drawing.Size(80, 32);
-            this.xoaToolStripMenuItem.Text = "Xóa";
-            // 
-            // suaToolStripMenuItem
-            // 
-            this.suaToolStripMenuItem.Image = global::GUI.Properties.Resources.edit;
-            this.suaToolStripMenuItem.Name = "suaToolStripMenuItem";
-            this.suaToolStripMenuItem.Size = new System.Drawing.Size(79, 32);
-            this.suaToolStripMenuItem.Text = "Sửa";
-            // 
-            // searchToolStripMenuItem
-            // 
-            this.searchToolStripMenuItem.Image = global::GUI.Properties.Resources.search;
-            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(125, 32);
-            this.searchToolStripMenuItem.Text = "Tìm kiếm";
-            // 
-            // closeToolStripMenuItem
-            // 
-            this.closeToolStripMenuItem.BackColor = System.Drawing.Color.Red;
-            this.closeToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.closeToolStripMenuItem.Image = global::GUI.Properties.Resources.close;
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(95, 32);
-            this.closeToolStripMenuItem.Text = "Đóng";
             // 
             // frmQL_Ban
             // 

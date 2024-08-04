@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -41,23 +43,22 @@
             this.bànToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dịchVụToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kháchHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nhânViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tạoTàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.phânQuyềnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bida_panel = new System.Windows.Forms.Panel();
             this.bida_panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.minimize_btn = new System.Windows.Forms.Button();
             this.close_btn = new System.Windows.Forms.Button();
+            this.minimize_btn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.bida_panel.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -76,6 +77,28 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1365, 56);
             this.panel2.TabIndex = 1;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::GUI.Properties.Resources.house;
+            this.pictureBox2.Location = new System.Drawing.Point(545, 14);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::GUI.Properties.Resources.user;
+            this.pictureBox1.Location = new System.Drawing.Point(43, 14);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // label2
             // 
@@ -184,7 +207,8 @@
             this.danhMucjToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bànToolStripMenuItem,
             this.dịchVụToolStripMenuItem,
-            this.kháchHàngToolStripMenuItem});
+            this.kháchHàngToolStripMenuItem,
+            this.nhânViênToolStripMenuItem});
             this.danhMucjToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.danhMucjToolStripMenuItem.Name = "danhMucjToolStripMenuItem";
             this.danhMucjToolStripMenuItem.Size = new System.Drawing.Size(112, 29);
@@ -195,6 +219,7 @@
             this.bànToolStripMenuItem.Name = "bànToolStripMenuItem";
             this.bànToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
             this.bànToolStripMenuItem.Text = "Bàn";
+            this.bànToolStripMenuItem.Click += new System.EventHandler(this.bànToolStripMenuItem_Click);
             // 
             // dịchVụToolStripMenuItem
             // 
@@ -207,6 +232,12 @@
             this.kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
             this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
             this.kháchHàngToolStripMenuItem.Text = "Khách hàng";
+            // 
+            // nhânViênToolStripMenuItem
+            // 
+            this.nhânViênToolStripMenuItem.Name = "nhânViênToolStripMenuItem";
+            this.nhânViênToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
+            this.nhânViênToolStripMenuItem.Text = "Nhân viên";
             // 
             // tàiKhoảnToolStripMenuItem
             // 
@@ -231,28 +262,6 @@
             this.phânQuyềnToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
             this.phânQuyềnToolStripMenuItem.Text = "Phân quyền";
             this.phânQuyềnToolStripMenuItem.Click += new System.EventHandler(this.phânQuyềnToolStripMenuItem_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::GUI.Properties.Resources.house;
-            this.pictureBox2.Location = new System.Drawing.Point(545, 14);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::GUI.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(43, 14);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
             // 
             // bida_panel
             // 
@@ -300,19 +309,6 @@
             this.panel4.Size = new System.Drawing.Size(167, 55);
             this.panel4.TabIndex = 3;
             // 
-            // minimize_btn
-            // 
-            this.minimize_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
-            this.minimize_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.minimize_btn.Image = global::GUI.Properties.Resources.minimize;
-            this.minimize_btn.Location = new System.Drawing.Point(55, 10);
-            this.minimize_btn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.minimize_btn.Name = "minimize_btn";
-            this.minimize_btn.Size = new System.Drawing.Size(32, 31);
-            this.minimize_btn.TabIndex = 0;
-            this.minimize_btn.UseVisualStyleBackColor = false;
-            this.minimize_btn.Click += new System.EventHandler(this.minimize_btn_Click);
-            // 
             // close_btn
             // 
             this.close_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
@@ -325,6 +321,19 @@
             this.close_btn.TabIndex = 1;
             this.close_btn.UseVisualStyleBackColor = false;
             this.close_btn.Click += new System.EventHandler(this.close_btn_Click);
+            // 
+            // minimize_btn
+            // 
+            this.minimize_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.minimize_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.minimize_btn.Image = global::GUI.Properties.Resources.minimize;
+            this.minimize_btn.Location = new System.Drawing.Point(55, 10);
+            this.minimize_btn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.minimize_btn.Name = "minimize_btn";
+            this.minimize_btn.Size = new System.Drawing.Size(32, 31);
+            this.minimize_btn.TabIndex = 0;
+            this.minimize_btn.UseVisualStyleBackColor = false;
+            this.minimize_btn.Click += new System.EventHandler(this.minimize_btn_Click);
             // 
             // panel1
             // 
@@ -355,11 +364,11 @@
             this.Text = "Form1";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.bida_panel.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -395,5 +404,6 @@
         private System.Windows.Forms.Button close_btn;
         private System.Windows.Forms.Button minimize_btn;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripMenuItem nhânViênToolStripMenuItem;
     }
 }
