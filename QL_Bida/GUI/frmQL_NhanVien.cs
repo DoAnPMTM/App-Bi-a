@@ -121,7 +121,7 @@ namespace GUI
 
             string maNV = txtMaNV.Text.Trim();
             string tenNV = txtTenNV.Text.Trim();
-            string caLam = cboNV.SelectedItem.ToString().Trim() == "Sáng" ? "1" : "0";
+            string caLam = cboNV.SelectedItem.ToString().Trim() == "Có" ? "1" : "0";
             string updateQuery = "UPDATE NHANVIEN SET TENNV = @TenNV, CALAM = @CaLam WHERE MANHANVIEN = @MaNV";
             using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
             {
@@ -205,7 +205,7 @@ namespace GUI
 
             string maNV = GenerateMaNhanVien();
             string tenNV = txtTenNV.Text.Trim();
-            string caLam = cboNV.Text.Trim() == "Sáng" ? "1" : "0";
+            string caLam = cboNV.Text.Trim() == "Có" ? "1" : "0";
 
             string insertQuery = "INSERT INTO NhanVien (MaNhanVien, TenNV, CaLam) VALUES (@MaNhanVien, @TenNV, @CaLam)";
             using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
@@ -312,7 +312,7 @@ namespace GUI
         public void LoadgvNV()
         {
             string query = @"SELECT MaNhanVien, TenNV, 
-                            CASE WHEN CaLam = 0 THEN N'Tối' ELSE N'Sáng' END AS CaLam 
+                            CASE WHEN CaLam = 0 THEN N'Không' ELSE N'Có' END AS CaLam 
                             FROM NhanVien";
             da_nv = new SqlDataAdapter(query, conn);
             ds_QLBida.Clear();
@@ -323,8 +323,8 @@ namespace GUI
         public void LoadCboCaLam()
         {
             cboNV.Items.Clear();
-            cboNV.Items.Add("Sáng");
-            cboNV.Items.Add("Tối");
+            cboNV.Items.Add("Có");
+            cboNV.Items.Add("Không");
         }
 
         private void ClearFields()

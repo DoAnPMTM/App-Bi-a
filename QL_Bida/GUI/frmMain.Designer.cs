@@ -54,6 +54,7 @@
             this.close_btn = new System.Windows.Forms.Button();
             this.minimize_btn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.sƠĐỒBÀNToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -134,10 +135,10 @@
             this.flowLayoutPanel1.Controls.Add(this.button3);
             this.flowLayoutPanel1.Controls.Add(this.btnDX);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(1097, 88);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(1097, 91);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(268, 467);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(268, 464);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // button1
@@ -172,7 +173,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(265, 53);
             this.button3.TabIndex = 2;
-            this.button3.Text = "Đặt bàn";
+            this.button3.Text = "Đặt bàn (0)";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -191,14 +192,16 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sƠĐỒBÀNToolStripMenuItem,
             this.danhMucjToolStripMenuItem,
             this.tàiKhoảnToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1365, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1365, 36);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -268,10 +271,10 @@
             this.bida_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(68)))), ((int)(((byte)(100)))));
             this.bida_panel.Controls.Add(this.bida_panel1);
             this.bida_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bida_panel.Location = new System.Drawing.Point(0, 88);
+            this.bida_panel.Location = new System.Drawing.Point(0, 91);
             this.bida_panel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bida_panel.Name = "bida_panel";
-            this.bida_panel.Size = new System.Drawing.Size(1097, 467);
+            this.bida_panel.Size = new System.Drawing.Size(1097, 464);
             this.bida_panel.TabIndex = 3;
             // 
             // bida_panel1
@@ -281,8 +284,9 @@
             this.bida_panel1.Location = new System.Drawing.Point(0, 0);
             this.bida_panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bida_panel1.Name = "bida_panel1";
-            this.bida_panel1.Size = new System.Drawing.Size(1097, 467);
+            this.bida_panel1.Size = new System.Drawing.Size(1097, 464);
             this.bida_panel1.TabIndex = 4;
+            this.bida_panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.bida_panel1_Paint);
             // 
             // label3
             // 
@@ -341,11 +345,18 @@
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 33);
+            this.panel1.Location = new System.Drawing.Point(0, 36);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1365, 55);
             this.panel1.TabIndex = 0;
+            // 
+            // sƠĐỒBÀNToolStripMenuItem
+            // 
+            this.sƠĐỒBÀNToolStripMenuItem.Name = "sƠĐỒBÀNToolStripMenuItem";
+            this.sƠĐỒBÀNToolStripMenuItem.Size = new System.Drawing.Size(130, 32);
+            this.sƠĐỒBÀNToolStripMenuItem.Text = "SƠ ĐỒ BÀN";
+            this.sƠĐỒBÀNToolStripMenuItem.Click += new System.EventHandler(this.sƠĐỒBÀNToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -405,5 +416,6 @@
         private System.Windows.Forms.Button minimize_btn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem nhânViênToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sƠĐỒBÀNToolStripMenuItem;
     }
 }

@@ -16,6 +16,7 @@ namespace GUI
     {
         NHANVIEN nv = new NHANVIEN();
         BanDAL banDAL = new BanDAL();
+        DatBanDAL db = new DatBanDAL();
         public frmMain(NHANVIEN nv)
         {
             this.nv = nv;
@@ -27,9 +28,16 @@ namespace GUI
             loadHienThi();
             label1.Text = nv.TENNV;
             getTable1();
+            updateDatBanButton();
             dịchVụToolStripMenuItem.Click += DịchVụToolStripMenuItem_Click;
             kháchHàngToolStripMenuItem.Click += KháchHàngToolStripMenuItem_Click;
             nhânViênToolStripMenuItem.Click += NhânViênToolStripMenuItem_Click;
+        }
+
+        private void updateDatBanButton()
+        {
+            int datBanCount = db.loadDatBan().Count;
+            button3.Text = $"Đặt bàn ({datBanCount})";
         }
 
         private void NhânViênToolStripMenuItem_Click(object sender, EventArgs e)
@@ -380,6 +388,17 @@ namespace GUI
             frmMain frm = new frmMain(nv);
             frm.Show();
             this.Close();
+        }
+
+        private void bida_panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void sƠĐỒBÀNToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMain frmMain = new frmMain(nv);
+            frmMain.Show();
         }
     }
 }
