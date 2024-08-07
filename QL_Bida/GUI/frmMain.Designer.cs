@@ -70,7 +70,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.panel2.BackColor = System.Drawing.Color.LightSlateGray;
             this.panel2.Controls.Add(this.lblDateTime);
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.pictureBox1);
@@ -144,7 +144,7 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(71)))), ((int)(((byte)(99)))));
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.SlateGray;
             this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Controls.Add(this.button2);
             this.flowLayoutPanel1.Controls.Add(this.btnDatBan);
@@ -242,26 +242,26 @@
             // bànToolStripMenuItem
             // 
             this.bànToolStripMenuItem.Name = "bànToolStripMenuItem";
-            this.bànToolStripMenuItem.Size = new System.Drawing.Size(224, 30);
+            this.bànToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
             this.bànToolStripMenuItem.Text = "Bàn";
             this.bànToolStripMenuItem.Click += new System.EventHandler(this.bànToolStripMenuItem_Click);
             // 
             // dịchVụToolStripMenuItem
             // 
             this.dịchVụToolStripMenuItem.Name = "dịchVụToolStripMenuItem";
-            this.dịchVụToolStripMenuItem.Size = new System.Drawing.Size(224, 30);
+            this.dịchVụToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
             this.dịchVụToolStripMenuItem.Text = "Dịch vụ";
             // 
             // kháchHàngToolStripMenuItem
             // 
             this.kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
-            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(224, 30);
+            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
             this.kháchHàngToolStripMenuItem.Text = "Khách hàng";
             // 
             // nhânViênToolStripMenuItem
             // 
             this.nhânViênToolStripMenuItem.Name = "nhânViênToolStripMenuItem";
-            this.nhânViênToolStripMenuItem.Size = new System.Drawing.Size(224, 30);
+            this.nhânViênToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
             this.nhânViênToolStripMenuItem.Text = "Nhân viên";
             // 
             // tàiKhoảnToolStripMenuItem
@@ -277,13 +277,13 @@
             // tạoTàiKhoảnToolStripMenuItem
             // 
             this.tạoTàiKhoảnToolStripMenuItem.Name = "tạoTàiKhoảnToolStripMenuItem";
-            this.tạoTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(224, 30);
+            this.tạoTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
             this.tạoTàiKhoảnToolStripMenuItem.Text = "Tài khoản";
             // 
             // phânQuyềnToolStripMenuItem
             // 
             this.phânQuyềnToolStripMenuItem.Name = "phânQuyềnToolStripMenuItem";
-            this.phânQuyềnToolStripMenuItem.Size = new System.Drawing.Size(224, 30);
+            this.phânQuyềnToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
             this.phânQuyềnToolStripMenuItem.Text = "Phân quyền";
             // 
             // bida_panel
@@ -299,7 +299,7 @@
             // 
             // bida_panel1
             // 
-            this.bida_panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(68)))), ((int)(((byte)(100)))));
+            this.bida_panel1.BackColor = System.Drawing.Color.LightSlateGray;
             this.bida_panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bida_panel1.Location = new System.Drawing.Point(0, 0);
             this.bida_panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -335,7 +335,7 @@
             // 
             // close_btn
             // 
-            this.close_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.close_btn.BackColor = System.Drawing.Color.Teal;
             this.close_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.close_btn.Image = global::GUI.Properties.Resources.close;
             this.close_btn.Location = new System.Drawing.Point(113, 10);
@@ -348,7 +348,7 @@
             // 
             // minimize_btn
             // 
-            this.minimize_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.minimize_btn.BackColor = System.Drawing.Color.Teal;
             this.minimize_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minimize_btn.Image = global::GUI.Properties.Resources.minimize;
             this.minimize_btn.Location = new System.Drawing.Point(55, 10);
@@ -361,7 +361,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(28)))), ((int)(((byte)(60)))));
+            this.panel1.BackColor = System.Drawing.Color.Teal;
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
