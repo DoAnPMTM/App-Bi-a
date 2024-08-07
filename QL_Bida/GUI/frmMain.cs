@@ -32,12 +32,47 @@ namespace GUI
             dịchVụToolStripMenuItem.Click += DịchVụToolStripMenuItem_Click;
             kháchHàngToolStripMenuItem.Click += KháchHàngToolStripMenuItem_Click;
             nhânViênToolStripMenuItem.Click += NhânViênToolStripMenuItem_Click;
+            btnDatBan.Click += BtnDatBan_Click;
+            timerDateTime.Tick += TimerDateTime_Tick;
+            timerDateTime.Start();
+        }
+
+        private void BtnDatBan_Click(object sender, EventArgs e)
+        {
+            // Hide the panels
+            this.bida_panel1.Visible = false;
+            this.flowLayoutPanel1.Visible = false;
+            this.panel1.Visible = false;
+
+            // Create and display the frmQL_Ban form
+            frmDatBan db = new frmDatBan();
+            db.TopLevel = false; // Set to false to add to a panel
+            db.FormBorderStyle = FormBorderStyle.None; // Optional: remove form borders
+            db.Dock = DockStyle.Fill; // Make it fill the panel
+
+            // Attach the FormClosed event handler
+            db.FormClosed += Db_FormClosed;
+
+            this.bida_panel.Controls.Clear(); // Clear previous controls if needed
+            this.bida_panel.Controls.Add(db); // Add to the panel
+            db.Show();
+        }
+        private void Db_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmMain main = new frmMain(nv);
+            main.Show();
+            this.Close();
+        }
+
+        private void TimerDateTime_Tick(object sender, EventArgs e)
+        {
+            lblDateTime.Text = DateTime.Now.ToString("HH:mm tt\ndd/MM/yyyy");
         }
 
         private void updateDatBanButton()
         {
             int datBanCount = db.loadDatBan().Count;
-            button3.Text = $"Đặt bàn ({datBanCount})";
+            btnDatBan.Text = $"Đặt bàn ({datBanCount})";
         }
 
         private void NhânViênToolStripMenuItem_Click(object sender, EventArgs e)
@@ -76,7 +111,7 @@ namespace GUI
             this.panel1.Visible = false;
 
             // Create and display the frmQL_Ban form
-            frmQL_KhachHang kh = new frmQL_KhachHang();
+            frmQL_KhachHang kh = new frmQL_KhachHang(nv.QUYEN);
             kh.TopLevel = false; // Set to false to add to a panel
             kh.FormBorderStyle = FormBorderStyle.None; // Optional: remove form borders
             kh.Dock = DockStyle.Fill; // Make it fill the panel
@@ -104,7 +139,7 @@ namespace GUI
             this.panel1.Visible = false;
 
             // Create and display the frmQL_Ban form
-            frmQL_DichVu dv = new frmQL_DichVu();
+            frmQL_DichVu dv = new frmQL_DichVu(nv.QUYEN);
             dv.TopLevel = false; // Set to false to add to a panel
             dv.FormBorderStyle = FormBorderStyle.None; // Optional: remove form borders
             dv.Dock = DockStyle.Fill; // Make it fill the panel
@@ -136,11 +171,12 @@ namespace GUI
             if(nv.QUYEN == "ADMIN")
             {
                 tàiKhoảnToolStripMenuItem.Visible = true;
+                nhânViênToolStripMenuItem.Visible=true;
             }
             else
             {
                 tàiKhoảnToolStripMenuItem.Visible = false;
-
+                nhânViênToolStripMenuItem.Visible = false;
             }
         }
 
@@ -295,6 +331,7 @@ namespace GUI
                         frmBan frm = new frmBan(ban, nv);
                         frm.Show();
                         this.Hide();
+                        
                     };
                     if (r > 0)
                     {
@@ -334,14 +371,6 @@ namespace GUI
             frm.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            frmDatBan frm = new frmDatBan();
-            frm.Show();
-
-
-        }
-
         private void phânQuyềnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -366,7 +395,7 @@ namespace GUI
             this.panel1.Visible = false;
 
             // Create and display the frmQL_Ban form
-            frmQL_Ban ban = new frmQL_Ban();
+            frmQL_Ban ban = new frmQL_Ban(nv.QUYEN);
             ban.TopLevel = false; // Set to false to add to a panel
             ban.FormBorderStyle = FormBorderStyle.None; // Optional: remove form borders
             ban.Dock = DockStyle.Fill; // Make it fill the panel
@@ -399,6 +428,7 @@ namespace GUI
         {
             frmMain frmMain = new frmMain(nv);
             frmMain.Show();
+            this.Close();
         }
     }
 }

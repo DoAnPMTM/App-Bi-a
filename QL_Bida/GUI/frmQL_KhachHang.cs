@@ -21,7 +21,8 @@ namespace GUI
         SqlConnection conn = new SqlConnection(Properties.Settings.Default.cnn);
         DataSet ds_QLBida = new DataSet();
         SqlDataAdapter da_bida;
-        public frmQL_KhachHang()
+        private string userRole;
+        public frmQL_KhachHang(string userRole)
         {
             InitializeComponent();
             Load += FrmQL_KhachHang_Load;
@@ -32,6 +33,7 @@ namespace GUI
             suaToolStripMenuItem.Click += SuaToolStripMenuItem_Click;
             searchToolStripMenuItem.Click += SearchToolStripMenuItem_Click;
             closeToolStripMenuItem.Click += CloseToolStripMenuItem_Click;
+            this.userRole = userRole;
         }
 
 
@@ -227,6 +229,14 @@ namespace GUI
         private void FrmQL_KhachHang_Load(object sender, EventArgs e)
         {
             LoadgvKH();
+            if(userRole!="ADMIN")
+            {
+                DisableUser();
+            }    
+        }
+        public void DisableUser()
+        {
+            xoaToolStripMenuItem.Enabled = false;
         }
         public void LoadgvKH()
         {

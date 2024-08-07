@@ -48,7 +48,15 @@ namespace GUI
 
         private void close_btn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void frmDatBan_Load(object sender, EventArgs e)
+        {
+            loadDatBan();
         }
     }
 

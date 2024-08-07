@@ -21,7 +21,8 @@ namespace GUI
         SqlConnection conn = new SqlConnection(Properties.Settings.Default.cnn);
         DataSet ds_QLBida = new DataSet();
         SqlDataAdapter da_bida;
-        public frmQL_DichVu()
+        private string userRole;
+        public frmQL_DichVu(string userRole)
         {
             InitializeComponent();
             Load += FrmQL_DichVu_Load;
@@ -32,7 +33,7 @@ namespace GUI
             suaToolStripMenuItem.Click += SuaToolStripMenuItem_Click;
             searchToolStripMenuItem.Click += SearchToolStripMenuItem_Click;
             closeToolStripMenuItem.Click += CloseToolStripMenuItem_Click;
-            
+            this.userRole = userRole;
         }
 
         private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -344,6 +345,18 @@ namespace GUI
         {
             LoadgvDV();
             LoadCboDVT();
+
+            if(userRole!="ADMIN")
+            {
+                DisableUser();
+            }    
+
+        }
+        public void DisableUser()
+        {
+            themToolStripMenuItem.Enabled = false;
+            xoaToolStripMenuItem.Enabled = false;
+            suaToolStripMenuItem.Enabled = false;
         }
         private void ClearFields()
         {

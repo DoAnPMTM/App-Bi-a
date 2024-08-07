@@ -9,6 +9,7 @@
       <Column Name="TINHTRANG" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="GIATHUE" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Association Name="BAN_BIENLAI" Member="BIENLAIs" ThisKey="MABAN" OtherKey="MABAN" Type="BIENLAI" />
+      <Association Name="BAN_DATBAN" Member="DATBANs" ThisKey="MABAN" OtherKey="MABAN" Type="DATBAN" />
     </Type>
   </Table>
   <Table Name="dbo.NHANVIEN" Member="NHANVIENs">
@@ -55,6 +56,10 @@
       <Column Name="GHICHU" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="THOIGIANDEN" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="MABAN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MAKH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="BAN_DATBAN" Member="BAN" ThisKey="MABAN" OtherKey="MABAN" Type="BAN" IsForeignKey="true" />
+      <Association Name="KHACHHANG_DATBAN" Member="KHACHHANG" ThisKey="MAKH" OtherKey="MAKH" Type="KHACHHANG" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DICHVU" Member="DICHVUs">
@@ -72,6 +77,7 @@
       <Column Name="TENKH" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="SDT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="KHACHHANG_BIENLAI" Member="BIENLAIs" ThisKey="MAKH" OtherKey="MAKH" Type="BIENLAI" />
+      <Association Name="KHACHHANG_DATBAN" Member="DATBANs" ThisKey="MAKH" OtherKey="MAKH" Type="DATBAN" />
     </Type>
   </Table>
 </Database>

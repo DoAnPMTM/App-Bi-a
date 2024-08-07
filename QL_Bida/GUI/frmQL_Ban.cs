@@ -18,7 +18,8 @@ namespace GUI
         SqlConnection conn = new SqlConnection(Properties.Settings.Default.cnn);
         DataSet ds_QLBida = new DataSet();
         SqlDataAdapter da_bida;
-        public frmQL_Ban()
+        private string userRole;
+        public frmQL_Ban(string userRole)
         {
             InitializeComponent();
             dgvBan.CellClick += DgvBan_CellClick;
@@ -34,6 +35,7 @@ namespace GUI
             cboLoaiBan.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTinhTrang.DropDownStyle = ComboBoxStyle.DropDownList;
             cboKhuVuc.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.userRole = userRole;
         }
 
         private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -304,6 +306,18 @@ namespace GUI
             dgvBan.Columns["LoaiBan"].ReadOnly = true;
             dgvBan.Columns["KhuVuc"].ReadOnly = true;
             dgvBan.Columns["TinhTrang"].ReadOnly = true;
+
+            // Disable buttons if user is not an admin
+            if (userRole != "ADMIN")
+            {
+                DisableUser();
+            }
+        }
+        public void DisableUser()
+        {
+            themToolStripMenuItem.Enabled = false;
+            xoaToolStripMenuItem.Enabled = false;
+            suaToolStripMenuItem.Enabled = false;
         }
 
         private void DgvBan_CellValueChanged(object sender, DataGridViewCellEventArgs e)

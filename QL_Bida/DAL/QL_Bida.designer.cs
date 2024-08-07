@@ -160,6 +160,8 @@ namespace DAL
 		
 		private EntitySet<BIENLAI> _BIENLAIs;
 		
+		private EntitySet<DATBAN> _DATBANs;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -181,6 +183,7 @@ namespace DAL
 		public BAN()
 		{
 			this._BIENLAIs = new EntitySet<BIENLAI>(new Action<BIENLAI>(this.attach_BIENLAIs), new Action<BIENLAI>(this.detach_BIENLAIs));
+			this._DATBANs = new EntitySet<DATBAN>(new Action<DATBAN>(this.attach_DATBANs), new Action<DATBAN>(this.detach_DATBANs));
 			OnCreated();
 		}
 		
@@ -317,6 +320,19 @@ namespace DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BAN_DATBAN", Storage="_DATBANs", ThisKey="MABAN", OtherKey="MABAN")]
+		public EntitySet<DATBAN> DATBANs
+		{
+			get
+			{
+				return this._DATBANs;
+			}
+			set
+			{
+				this._DATBANs.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -344,6 +360,18 @@ namespace DAL
 		}
 		
 		private void detach_BIENLAIs(BIENLAI entity)
+		{
+			this.SendPropertyChanging();
+			entity.BAN = null;
+		}
+		
+		private void attach_DATBANs(DATBAN entity)
+		{
+			this.SendPropertyChanging();
+			entity.BAN = this;
+		}
+		
+		private void detach_DATBANs(DATBAN entity)
 		{
 			this.SendPropertyChanging();
 			entity.BAN = null;
@@ -1129,6 +1157,14 @@ namespace DAL
 		
 		private System.DateTime _THOIGIANDEN;
 		
+		private System.Nullable<int> _MABAN;
+		
+		private System.Nullable<int> _MAKH;
+		
+		private EntityRef<BAN> _BAN;
+		
+		private EntityRef<KHACHHANG> _KHACHHANG;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1147,10 +1183,16 @@ namespace DAL
     partial void OnTRANGTHAIChanged();
     partial void OnTHOIGIANDENChanging(System.DateTime value);
     partial void OnTHOIGIANDENChanged();
+    partial void OnMABANChanging(System.Nullable<int> value);
+    partial void OnMABANChanged();
+    partial void OnMAKHChanging(System.Nullable<int> value);
+    partial void OnMAKHChanged();
     #endregion
 		
 		public DATBAN()
 		{
+			this._BAN = default(EntityRef<BAN>);
+			this._KHACHHANG = default(EntityRef<KHACHHANG>);
 			OnCreated();
 		}
 		
@@ -1290,6 +1332,122 @@ namespace DAL
 					this._THOIGIANDEN = value;
 					this.SendPropertyChanged("THOIGIANDEN");
 					this.OnTHOIGIANDENChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MABAN", DbType="Int")]
+		public System.Nullable<int> MABAN
+		{
+			get
+			{
+				return this._MABAN;
+			}
+			set
+			{
+				if ((this._MABAN != value))
+				{
+					if (this._BAN.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMABANChanging(value);
+					this.SendPropertyChanging();
+					this._MABAN = value;
+					this.SendPropertyChanged("MABAN");
+					this.OnMABANChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAKH", DbType="Int")]
+		public System.Nullable<int> MAKH
+		{
+			get
+			{
+				return this._MAKH;
+			}
+			set
+			{
+				if ((this._MAKH != value))
+				{
+					if (this._KHACHHANG.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMAKHChanging(value);
+					this.SendPropertyChanging();
+					this._MAKH = value;
+					this.SendPropertyChanged("MAKH");
+					this.OnMAKHChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BAN_DATBAN", Storage="_BAN", ThisKey="MABAN", OtherKey="MABAN", IsForeignKey=true)]
+		public BAN BAN
+		{
+			get
+			{
+				return this._BAN.Entity;
+			}
+			set
+			{
+				BAN previousValue = this._BAN.Entity;
+				if (((previousValue != value) 
+							|| (this._BAN.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._BAN.Entity = null;
+						previousValue.DATBANs.Remove(this);
+					}
+					this._BAN.Entity = value;
+					if ((value != null))
+					{
+						value.DATBANs.Add(this);
+						this._MABAN = value.MABAN;
+					}
+					else
+					{
+						this._MABAN = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("BAN");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KHACHHANG_DATBAN", Storage="_KHACHHANG", ThisKey="MAKH", OtherKey="MAKH", IsForeignKey=true)]
+		public KHACHHANG KHACHHANG
+		{
+			get
+			{
+				return this._KHACHHANG.Entity;
+			}
+			set
+			{
+				KHACHHANG previousValue = this._KHACHHANG.Entity;
+				if (((previousValue != value) 
+							|| (this._KHACHHANG.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._KHACHHANG.Entity = null;
+						previousValue.DATBANs.Remove(this);
+					}
+					this._KHACHHANG.Entity = value;
+					if ((value != null))
+					{
+						value.DATBANs.Add(this);
+						this._MAKH = value.MAKH;
+					}
+					else
+					{
+						this._MAKH = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("KHACHHANG");
 				}
 			}
 		}
@@ -1491,6 +1649,8 @@ namespace DAL
 		
 		private EntitySet<BIENLAI> _BIENLAIs;
 		
+		private EntitySet<DATBAN> _DATBANs;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1506,6 +1666,7 @@ namespace DAL
 		public KHACHHANG()
 		{
 			this._BIENLAIs = new EntitySet<BIENLAI>(new Action<BIENLAI>(this.attach_BIENLAIs), new Action<BIENLAI>(this.detach_BIENLAIs));
+			this._DATBANs = new EntitySet<DATBAN>(new Action<DATBAN>(this.attach_DATBANs), new Action<DATBAN>(this.detach_DATBANs));
 			OnCreated();
 		}
 		
@@ -1582,6 +1743,19 @@ namespace DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KHACHHANG_DATBAN", Storage="_DATBANs", ThisKey="MAKH", OtherKey="MAKH")]
+		public EntitySet<DATBAN> DATBANs
+		{
+			get
+			{
+				return this._DATBANs;
+			}
+			set
+			{
+				this._DATBANs.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1609,6 +1783,18 @@ namespace DAL
 		}
 		
 		private void detach_BIENLAIs(BIENLAI entity)
+		{
+			this.SendPropertyChanging();
+			entity.KHACHHANG = null;
+		}
+		
+		private void attach_DATBANs(DATBAN entity)
+		{
+			this.SendPropertyChanging();
+			entity.KHACHHANG = this;
+		}
+		
+		private void detach_DATBANs(DATBAN entity)
 		{
 			this.SendPropertyChanging();
 			entity.KHACHHANG = null;

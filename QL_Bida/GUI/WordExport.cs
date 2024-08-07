@@ -197,7 +197,7 @@ namespace GUI
 
         #endregion
 
-        public void BienLai(string pngay, string pthang, string pnam, string pmabl, string pmaban, string photenkh, string pgiobd, string pgiokt, string ptongtien, string pnhanvien)
+        public void BienLaiThuTien(string pngay, string pthang, string pnam,string pdatetime, string pmabl, string pmaban, string photenkh, string pgiobd, string pgiokt, string ptongtien, string pnhanvien,string filePath)
         {
             #region ===== Core======
             MemoryStream mStream = null;
@@ -226,7 +226,7 @@ namespace GUI
             try
             {
                 // Read template
-                mStream = new MemoryStream(File.ReadAllBytes("bienlai.docx").ToArray());// I
+                mStream = new MemoryStream(File.ReadAllBytes("bienlaithutien.doc").ToArray());// I
                 document = new WordDocument(mStream);
                 mStream.Close();
             }
@@ -237,7 +237,7 @@ namespace GUI
             }
 
             fileW = Global.AppPath + Constants.FOLDER_TEMP +
-                            Constants.CHAR_FLASH + "bienlai" + Constants.FILE_EXT_DOC;// II
+                            Constants.CHAR_FLASH + "bienlaithutien" + Constants.FILE_EXT_DOC;// II
 
             //Prepare to mailMerg
             DateTime SysDate = DateTime.Now;
@@ -247,10 +247,10 @@ namespace GUI
 
 
 
-            string[] fields = new string[] { "ngay", "thang", "nam", "mabl", "maban", "hotenkh", "giobd", "giokt", "tongtien", "nhanvien" };
+            string[] fields = new string[] { "ngay", "thang", "nam","datetime", "mabl", "maban", "hotenkh", "giobd", "giokt", "tongtien", "nhanvien" };
 
 
-            string[] values = new string[] { pngay, pthang, pnam, pmabl, pmaban, photenkh, pgiobd, pgiokt, ptongtien, pnhanvien };
+            string[] values = new string[] { pngay, pthang, pnam, pdatetime, pmabl, pmaban, photenkh, pgiobd, pgiokt, ptongtien, pnhanvien };
 
             #endregion End Set Value=====
 
@@ -259,13 +259,13 @@ namespace GUI
             document.MailMerge.Execute(fields, values);
 
             // Save document to file
-            document.Save(fileW, FormatType.Doc);
+            document.Save(filePath, FormatType.Doc);
 
             // Close the document after save
             document.Close();
 
             
-            this.PrinPriview(fileW);
+            this.PrinPriview(filePath);
 
                #endregion =====  End Core=====
         }

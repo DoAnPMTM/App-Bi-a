@@ -23,10 +23,6 @@ namespace GUI
         ChiTietDVDAL chiTietDVDAL = new ChiTietDVDAL();
         int tongTienDV = 0;
 
-        public frmBan()
-        {
-        }
-
         public frmBan(BAN b, NHANVIEN nv)
         {
             this.b = b;
@@ -41,11 +37,38 @@ namespace GUI
             loadCbbBan();
             loadBienLai();
             panel5.Visible = false;
-     
+            btnThoat.Click += btnThoat_Click;
+            btnThem.Click += btnThem_Click;
+            btnThanhToan.Click += btnThanhToan_Click;
+            btnIn.Click += btnIn_Click;
+            button1.Click += button1_Click;
+            button2.Click += button2_Click;
+            cbbBanTrong.SelectedIndexChanged += cbbBanTrong_SelectedIndexChanged;
+            toolStripButton1.Click += toolStripButton1_Click;
+            toolStripButton2.Click += toolStripButton2_Click;
+            toolStripButton3.Click += toolStripButton3_Click;
+            cbbBanTrong.SelectionChangeCommitted += cbbBanTrong_SelectionChangeCommitted;
+            textBox1.KeyPress += textBox1_KeyPress;
+            dataGridView1.CellClick += dataGridView1_CellClick;
+            timerDatetime.Tick += TimerDatetime_Tick;
+            timerDatetime.Start();
+            loadCTDV();
 
 
+        }
 
+        public frmBan()
+        {
+        }
+        public void updateDichVunButton()
+        {
+            int dvCount = dataGridView1.RowCount;
+            button2.Text = $"Dịch Vụ ({dvCount})";
+        }
 
+        private void TimerDatetime_Tick(object sender, EventArgs e)
+        {
+            lblDateTime.Text = DateTime.Now.ToString("HH:mm tt\ndd/MM/yyyy");
         }
 
         public void loadCbbBan()
@@ -56,8 +79,8 @@ namespace GUI
             cbbBanTrong.DisplayMember = "TENBAN";
             cbbBanTrong.ValueMember = "MABAN";
 
+            cbbBanTrong.SelectedIndex = -1;
 
-            
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -74,12 +97,14 @@ namespace GUI
 
         public void loadCbKH()
         {
-            cbbKH.DataSource = khachHangDAL.loadKH();
+            var khachHangList = khachHangDAL.loadKH();
+            cbbKH.DataSource = khachHangList;
             cbbKH.DisplayMember = "TENKH";
             cbbKH.ValueMember = "MAKH";
+            cbbKH.SelectedIndex = -1;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnThem_Click(object sender, EventArgs e)
         {
             BIENLAI bl = new BIENLAI();
             bl.GIOBD = DateTime.Now;
@@ -88,7 +113,7 @@ namespace GUI
             bl.MABAN = b.MABAN;
             bl.MANHANVIEN = nv.MANHANVIEN;
             bl.TONGTIEN = 0;
-            if(bienLaiDAL.themBienLai(bl))
+            if (bienLaiDAL.themBienLai(bl))
             {
                 MessageBox.Show("Bắt đầu tính giờ");
                 loadBienLai();
@@ -98,7 +123,7 @@ namespace GUI
             {
                 MessageBox.Show("Có lỗi xảy ra");
             }
-            
+
 
 
 
@@ -106,7 +131,7 @@ namespace GUI
 
         public void loadBienLai()
         {
-            if(bienLaiDAL.getBienLai(b.MABAN) != null)
+            if (bienLaiDAL.getBienLai(b.MABAN) != null)
             {
                 BIENLAI bl = bienLaiDAL.getBienLai(b.MABAN);
                 cbbKH.SelectedValue = bl.MAKH;
@@ -156,19 +181,19 @@ namespace GUI
             //tong tien Chỉ lấy phần nguyên không lấy phần thập phân
             tongTien = Math.Truncate(tongTien);
             bl.TONGTIEN = tongTien;
-           
+
             if (bienLaiDAL.thanhToan(bl))
             {
                 MessageBox.Show("Thanh toán thành công");
                 lblGKT.Text = "Giờ kết thúc: " + bl.GIOKT.Value.ToString("HH:mm:ss");
-                lblTongTien.Text = "Tổng tiền: " + bl.TONGTIEN + "đ";
-                btnThanhToan.Enabled = false;     
+                lblTongTien.Text = "Tổng tiền: " + bl.TONGTIEN + "VND";
+                btnThanhToan.Enabled = false;
                 btnIn.Enabled = true;
                 cbbBanTrong.Enabled = false;
                 button2.Enabled = false;
             }
 
-            
+
 
 
 
@@ -235,8 +260,8 @@ namespace GUI
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-              
-            if(!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -246,25 +271,35 @@ namespace GUI
         {
             double tongTienDV = 0;
             dataGridView1.Rows.Clear();
-            int mabl = bienLaiDAL.getBienLai(b.MABAN).MABIENLAI;
-            List<CHITIETDV> lst = chiTietDVDAL.getChiTietDVByMaBienLai(mabl);
-            foreach(CHITIETDV ct in lst)
+            var bienLai = bienLaiDAL.getBienLai(b.MABAN);
+
+            if (bienLai != null)
             {
-                int thanhTien = (int)(ct.SOLUONG * ct.DICHVU.DONGIA);
-                tongTienDV += thanhTien;
-                dataGridView1.Rows.Add(ct.DICHVU.TENDV, ct.SOLUONG, ct.DICHVU.DONGIA, thanhTien, ct.DICHVU.MADV, ct.MABIENLAI );
-            }   
-            lblTongDV.Text = "Tổng tiền dịch vụ: " + tongTienDV + "đ";
-            
-            
+                int mabl = bienLai.MABIENLAI;
+                List<CHITIETDV> lst = chiTietDVDAL.getChiTietDVByMaBienLai(mabl);
+
+                foreach (CHITIETDV ct in lst)
+                {
+                    int thanhTien = (int)(ct.SOLUONG * ct.DICHVU.DONGIA);
+                    tongTienDV += thanhTien;
+                    dataGridView1.Rows.Add(ct.DICHVU.TENDV, ct.SOLUONG, ct.DICHVU.DONGIA, thanhTien, ct.DICHVU.MADV, ct.MABIENLAI);
+                }
+                lblTongDV.Text = "Tổng tiền dịch vụ: " + tongTienDV + "VND";
+                updateDichVunButton();
+            }
+            else
+            {
+                MessageBox.Show("Bàn này trống!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
 
-       public void loadCBDV()
-       {
+        public void loadCBDV()
+        {
             comboBox1.DataSource = chiTietDVDAL.loadDV();
             comboBox1.DisplayMember = "TENDV";
             comboBox1.ValueMember = "MADV";
-       }
+        }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
@@ -284,12 +319,13 @@ namespace GUI
                 ct.SOLUONG = soluong;
                 chiTietDVDAL.themChiTietDV(ct);
                 loadCTDV();
+                updateDichVunButton();
             }
             catch
             {
                 MessageBox.Show("Thêm thất bại");
             }
-           
+
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -300,6 +336,7 @@ namespace GUI
                 int madv = int.Parse(comboBox1.SelectedValue.ToString());
                 chiTietDVDAL.xoaChiTietDV(mabl, madv);
                 loadCTDV();
+                updateDichVunButton();
             }
             catch
             {
@@ -313,7 +350,7 @@ namespace GUI
             textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             toolStripButton2.Enabled = true;
             toolStripButton3.Enabled = true;
-             
+
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
@@ -340,18 +377,30 @@ namespace GUI
         private void btnIn_Click(object sender, EventArgs e)
         {
             BIENLAI bl = bienLaiDAL.getBienLai1(b.MABAN);
-            string ngay = bl.NGAYLAP.Value.Day.ToString();
-            string thang = bl.NGAYLAP.Value.Month.ToString();
-            string nam = bl.NGAYLAP.Value.Year.ToString();
-            string gioBD = bl.GIOBD.Value.Hour.ToString() + ":" + bl.GIOBD.Value.Minute.ToString() + ":" + bl.GIOBD.Value.Second.ToString();
-            string gioKT = bl.GIOKT.Value.Hour.ToString() + ":" + bl.GIOKT.Value.Minute.ToString() + ":" + bl.GIOKT.Value.Second.ToString();
-            string tongTien = bl.TONGTIEN.ToString();
-            string maBL = bl.MABIENLAI.ToString();
-            string tenNV = bl.NHANVIEN.TENNV;
-            string tenKH = bl.KHACHHANG.TENKH;
-            string maBan = bl.BAN.MABAN.ToString();
-            WordExport wordExport = new WordExport();
-            wordExport.BienLai(ngay, thang, nam, maBL, maBan, tenKH, gioBD, gioKT, tongTien, tenNV);
+
+            if (bl != null) // Kiểm tra nếu bl != null
+            {
+                string ngay = bl.NGAYLAP.Value.Day.ToString();
+                string thang = bl.NGAYLAP.Value.Month.ToString();
+                string nam = bl.NGAYLAP.Value.Year.ToString();
+                string dateTime = DateTime.Now.ToString("HH:mm:ss");
+                string gioBD = bl.GIOBD.Value.Hour.ToString() + ":" + bl.GIOBD.Value.Minute.ToString() + ":" + bl.GIOBD.Value.Second.ToString();
+                string gioKT = bl.GIOKT.Value.Hour.ToString() + ":" + bl.GIOKT.Value.Minute.ToString() + ":" + bl.GIOKT.Value.Second.ToString();
+                string tongTien = bl.TONGTIEN.ToString();
+                string maBL = bl.MABIENLAI.ToString();
+                string tenNV = bl.NHANVIEN.TENNV;
+                string tenKH = bl.KHACHHANG.TENKH;
+                string maBan = bl.BAN.MABAN.ToString();
+
+                string filePath = @"D:\App-Bi-a\BienLai.doc";
+                WordExport w =new WordExport();
+                w.BienLaiThuTien(ngay,thang,nam,dateTime,maBL,maBan,tenKH,gioBD,gioKT,tongTien,tenNV,filePath);
+            }
+            else
+            {
+                // TH không tìm thấy BIENLAI tương ứng với MABAN
+                MessageBox.Show("Không tìm thấy biên lai tương ứng với mã bàn này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
         }
     }

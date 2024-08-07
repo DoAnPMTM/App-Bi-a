@@ -39,9 +39,23 @@ namespace GUI
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            textBox1.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            comboBox1.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            button1.Enabled = true;
+            if (e.RowIndex >= 0) // Ensure a valid row index
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                textBox1.Text = row.Cells[0].Value.ToString();
+
+                var quyenValue = row.Cells[2].Value;
+                if (quyenValue != null)
+                {
+                    comboBox1.SelectedItem = quyenValue.ToString();
+                }
+                else
+                {
+                    comboBox1.SelectedItem = null;
+                }
+
+                button1.Enabled = true;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
