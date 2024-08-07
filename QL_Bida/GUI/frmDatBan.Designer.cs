@@ -31,6 +31,11 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.close_btn = new System.Windows.Forms.Button();
@@ -40,12 +45,7 @@
             this.txtSDT = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenBan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnload = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -92,6 +92,41 @@
             this.dataGridView1.RowTemplate.Height = 28;
             this.dataGridView1.Size = new System.Drawing.Size(592, 334);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Tên khách hàng";
+            this.Column1.MinimumWidth = 8;
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 150;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Số điện thoại";
+            this.Column2.MinimumWidth = 8;
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 150;
+            // 
+            // TenBan
+            // 
+            this.TenBan.HeaderText = "Tên bàn";
+            this.TenBan.MinimumWidth = 6;
+            this.TenBan.Name = "TenBan";
+            this.TenBan.Width = 125;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Loại bàn";
+            this.Column3.MinimumWidth = 8;
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 150;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Thời gian đến";
+            this.Column4.MinimumWidth = 8;
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 150;
             // 
             // panel2
             // 
@@ -189,49 +224,15 @@
             this.btnSearch.Text = "Tìm kiếm";
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnload
             // 
-            this.button1.Image = global::GUI.Properties.Resources.load;
-            this.button1.Location = new System.Drawing.Point(299, 477);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 67);
-            this.button1.TabIndex = 9;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Tên khách hàng";
-            this.Column1.MinimumWidth = 8;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 150;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Số điện thoại";
-            this.Column2.MinimumWidth = 8;
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 150;
-            // 
-            // TenBan
-            // 
-            this.TenBan.HeaderText = "Tên bàn";
-            this.TenBan.MinimumWidth = 6;
-            this.TenBan.Name = "TenBan";
-            this.TenBan.Width = 125;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Loại bàn";
-            this.Column3.MinimumWidth = 8;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 150;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Thời gian đến";
-            this.Column4.MinimumWidth = 8;
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 150;
+            this.btnload.BackColor = System.Drawing.Color.Olive;
+            this.btnload.Image = global::GUI.Properties.Resources.exchange;
+            this.btnload.Location = new System.Drawing.Point(299, 477);
+            this.btnload.Name = "btnload";
+            this.btnload.Size = new System.Drawing.Size(66, 67);
+            this.btnload.TabIndex = 9;
+            this.btnload.UseVisualStyleBackColor = false;
             // 
             // frmDatBan
             // 
@@ -239,7 +240,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(1113, 556);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnload);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSDT);
             this.Controls.Add(this.label2);
@@ -276,7 +277,7 @@
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnload;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenBan;

@@ -34,6 +34,15 @@ namespace GUI
             searchToolStripMenuItem.Click += SearchToolStripMenuItem_Click;
             closeToolStripMenuItem.Click += CloseToolStripMenuItem_Click;
             this.userRole = userRole;
+            txtDonGia.KeyPress += TxtDonGia_KeyPress;
+        }
+
+        private void TxtDonGia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore this event
+            }
         }
 
         private void CloseToolStripMenuItem_Click(object sender, EventArgs e)

@@ -30,12 +30,21 @@ namespace GUI
             suaToolStripMenuItem.Click += SuaToolStripMenuItem_Click;
             searchToolStripMenuItem.Click += SearchToolStripMenuItem_Click;
             closeToolStripMenuItem.Click += CloseToolStripMenuItem_Click;
+            txtGiaThue.KeyPress += TxtGiaThue_KeyPress;
 
             //
             cboLoaiBan.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTinhTrang.DropDownStyle = ComboBoxStyle.DropDownList;
             cboKhuVuc.DropDownStyle = ComboBoxStyle.DropDownList;
             this.userRole = userRole;
+        }
+
+        private void TxtGiaThue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore this event
+            }
         }
 
         private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -547,6 +556,11 @@ namespace GUI
             DataTable dt_ban = new DataTable();
             da_ban.Fill(dt_ban);
             dgvBan.DataSource = dt_ban;
+        }
+
+        private void txtGiaThue_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

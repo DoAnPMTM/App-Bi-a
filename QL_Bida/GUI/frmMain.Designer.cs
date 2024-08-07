@@ -279,14 +279,12 @@
             this.tạoTàiKhoảnToolStripMenuItem.Name = "tạoTàiKhoảnToolStripMenuItem";
             this.tạoTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(224, 30);
             this.tạoTàiKhoảnToolStripMenuItem.Text = "Tài khoản";
-            this.tạoTàiKhoảnToolStripMenuItem.Click += new System.EventHandler(this.tạoTàiKhoảnToolStripMenuItem_Click);
             // 
             // phânQuyềnToolStripMenuItem
             // 
             this.phânQuyềnToolStripMenuItem.Name = "phânQuyềnToolStripMenuItem";
             this.phânQuyềnToolStripMenuItem.Size = new System.Drawing.Size(224, 30);
             this.phânQuyềnToolStripMenuItem.Text = "Phân quyền";
-            this.phânQuyềnToolStripMenuItem.Click += new System.EventHandler(this.phânQuyềnToolStripMenuItem_Click);
             // 
             // bida_panel
             // 

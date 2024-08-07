@@ -145,3 +145,7 @@ D:\App-Bi-a\QL_Bida\GUI\obj\Debug\GUI.frmQL_Ban.resources
 D:\App-Bi-a\QL_Bida\GUI\obj\Debug\GUI.frmQL_DichVu.resources
 D:\App-Bi-a\QL_Bida\GUI\obj\Debug\GUI.frmQL_KhachHang.resources
 D:\App-Bi-a\QL_Bida\GUI\obj\Debug\GUI.frmQL_NhanVien.resources
+D:\App-Bi-a\QL_Bida\GUI\bin\Debug\Syncfusion.XlsIO.Base.dll
+D:\App-Bi-a\QL_Bida\GUI\bin\Debug\Syncfusion.Compression.Base.dll
+D:\App-Bi-a\QL_Bida\GUI\bin\Debug\Syncfusion.XlsIO.Base.xml
+D:\App-Bi-a\QL_Bida\GUI\bin\Debug\Syncfusion.Compression.Base.xml

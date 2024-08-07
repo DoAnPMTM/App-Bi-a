@@ -106,6 +106,12 @@ namespace GUI
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            if (cbbKH.SelectedIndex == -1)
+            {
+                MessageBox.Show("Vui lòng chọn khách hàng trước khi bắt đầu tính giờ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             BIENLAI bl = new BIENLAI();
             bl.GIOBD = DateTime.Now;
             bl.NGAYLAP = DateTime.Now;
@@ -287,11 +293,6 @@ namespace GUI
                 lblTongDV.Text = "Tổng tiền dịch vụ: " + tongTienDV + "VND";
                 updateDichVunButton();
             }
-            else
-            {
-                MessageBox.Show("Bàn này trống!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
         }
 
         public void loadCBDV()
@@ -383,7 +384,7 @@ namespace GUI
                 string ngay = bl.NGAYLAP.Value.Day.ToString();
                 string thang = bl.NGAYLAP.Value.Month.ToString();
                 string nam = bl.NGAYLAP.Value.Year.ToString();
-                string dateTime = DateTime.Now.ToString("HH:mm:ss");
+                string dateTime = DateTime.Now.ToString("HH:mm tt");
                 string gioBD = bl.GIOBD.Value.Hour.ToString() + ":" + bl.GIOBD.Value.Minute.ToString() + ":" + bl.GIOBD.Value.Second.ToString();
                 string gioKT = bl.GIOKT.Value.Hour.ToString() + ":" + bl.GIOKT.Value.Minute.ToString() + ":" + bl.GIOKT.Value.Second.ToString();
                 string tongTien = bl.TONGTIEN.ToString();
@@ -392,9 +393,8 @@ namespace GUI
                 string tenKH = bl.KHACHHANG.TENKH;
                 string maBan = bl.BAN.MABAN.ToString();
 
-                string filePath = @"D:\App-Bi-a\BienLai.doc";
                 WordExport w =new WordExport();
-                w.BienLaiThuTien(ngay,thang,nam,dateTime,maBL,maBan,tenKH,gioBD,gioKT,tongTien,tenNV,filePath);
+                w.BienLaiThuTien(ngay,thang,nam,dateTime,maBL,maBan,tenKH,gioBD,gioKT,tongTien,tenNV);
             }
             else
             {

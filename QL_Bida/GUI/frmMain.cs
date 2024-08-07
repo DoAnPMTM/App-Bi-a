@@ -32,9 +32,67 @@ namespace GUI
             dịchVụToolStripMenuItem.Click += DịchVụToolStripMenuItem_Click;
             kháchHàngToolStripMenuItem.Click += KháchHàngToolStripMenuItem_Click;
             nhânViênToolStripMenuItem.Click += NhânViênToolStripMenuItem_Click;
+            phânQuyềnToolStripMenuItem.Click += PhânQuyềnToolStripMenuItem_Click;
+            tạoTàiKhoảnToolStripMenuItem.Click += TạoTàiKhoảnToolStripMenuItem_Click;
             btnDatBan.Click += BtnDatBan_Click;
             timerDateTime.Tick += TimerDateTime_Tick;
             timerDateTime.Start();
+        }
+
+        private void TạoTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Hide the panels
+            this.bida_panel1.Visible = false;
+            this.flowLayoutPanel1.Visible = false;
+            this.panel1.Visible = false;
+
+            // Create and display the frmQL_Ban form
+            frmTaiKhoan tk = new frmTaiKhoan();
+            tk.TopLevel = false; // Set to false to add to a panel
+            tk.FormBorderStyle = FormBorderStyle.None; // Optional: remove form borders
+            tk.Dock = DockStyle.Fill; // Make it fill the panel
+
+            // Attach the FormClosed event handler
+            tk.FormClosed += Tk_FormClosed;
+
+            this.bida_panel.Controls.Clear(); // Clear previous controls if needed
+            this.bida_panel.Controls.Add(tk); // Add to the panel
+            tk.Show();
+        }
+
+        private void Tk_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmMain main = new frmMain(nv);
+            main.Show();
+            this.Close();
+        }
+
+        private void PhânQuyềnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Hide the panels
+            this.bida_panel1.Visible = false;
+            this.flowLayoutPanel1.Visible = false;
+            this.panel1.Visible = false;
+
+            // Create and display the frmQL_Ban form
+            frmPhanQuyen pq = new frmPhanQuyen(nv);
+            pq.TopLevel = false; // Set to false to add to a panel
+            pq.FormBorderStyle = FormBorderStyle.None; // Optional: remove form borders
+            pq.Dock = DockStyle.Fill; // Make it fill the panel
+
+            // Attach the FormClosed event handler
+            pq.FormClosed += Pq_FormClosed;
+
+            this.bida_panel.Controls.Clear(); // Clear previous controls if needed
+            this.bida_panel.Controls.Add(pq); // Add to the panel
+            pq.Show();
+        }
+
+        private void Pq_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmMain main = new frmMain(nv);
+            main.Show();
+            this.Close();
         }
 
         private void BtnDatBan_Click(object sender, EventArgs e)
@@ -369,22 +427,6 @@ namespace GUI
             this.Close();
             frmDN frm = new frmDN();
             frm.Show();
-        }
-
-        private void phânQuyềnToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            frmPhanQuyen frmPhanQuyen = new frmPhanQuyen(nv);
-            frmPhanQuyen.ShowDialog();
-            this.Show();
-        }
-
-        private void tạoTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            frmTaiKhoan frmTaiKhoan = new frmTaiKhoan();
-            frmTaiKhoan.ShowDialog();
-            this.Show();
         }
 
         private void bànToolStripMenuItem_Click(object sender, EventArgs e)

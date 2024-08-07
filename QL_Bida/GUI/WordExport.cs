@@ -197,7 +197,7 @@ namespace GUI
 
         #endregion
 
-        public void BienLaiThuTien(string pngay, string pthang, string pnam,string pdatetime, string pmabl, string pmaban, string photenkh, string pgiobd, string pgiokt, string ptongtien, string pnhanvien,string filePath)
+        public void BienLaiThuTien(string pngay, string pthang, string pnam,string pdatetime, string pmabl, string pmaban, string photenkh, string pgiobd, string pgiokt, string ptongtien, string pnhanvien)
         {
             #region ===== Core======
             MemoryStream mStream = null;
@@ -226,7 +226,7 @@ namespace GUI
             try
             {
                 // Read template
-                mStream = new MemoryStream(File.ReadAllBytes("bienlaithutien.doc").ToArray());// I
+                mStream = new MemoryStream(File.ReadAllBytes("bienlaithutien.docx").ToArray());// I
                 document = new WordDocument(mStream);
                 mStream.Close();
             }
@@ -259,13 +259,13 @@ namespace GUI
             document.MailMerge.Execute(fields, values);
 
             // Save document to file
-            document.Save(filePath, FormatType.Doc);
+            document.Save(fileW, FormatType.Doc);
 
             // Close the document after save
             document.Close();
 
             
-            this.PrinPriview(filePath);
+            this.PrinPriview(fileW);
 
                #endregion =====  End Core=====
         }

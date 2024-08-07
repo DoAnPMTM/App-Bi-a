@@ -235,6 +235,7 @@
             this.txtGiaThue.Name = "txtGiaThue";
             this.txtGiaThue.Size = new System.Drawing.Size(286, 23);
             this.txtGiaThue.TabIndex = 83;
+            this.txtGiaThue.TextChanged += new System.EventHandler(this.txtGiaThue_TextChanged);
             // 
             // cboTinhTrang
             // 
